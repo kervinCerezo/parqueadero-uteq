@@ -112,6 +112,10 @@ export default function Estacionamiento() {
           <div style={{ marginTop: 22 }}>
             <h3 style={{ fontSize: 13, marginBottom: 10 }}>Ubicación</h3>
             <MapaEstacionamiento alto={160} />
+            <div className="distribucion-destacada">
+              <span className="numero">4 × 20</span>
+              <span className="etiqueta">Distribución del parqueadero · 80 espacios</span>
+            </div>
           </div>
         </div>
       </div>
