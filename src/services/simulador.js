@@ -109,7 +109,7 @@ export async function simularLecturaSensor(espacio) {
  */
 export function iniciarSimulacionPeriodica(
   obtenerEspaciosActuales,
-  { intervaloMs = 8000, minCambios = 2, maxCambios = 6 } = {}
+  { intervaloMs = 3000, minCambios = 2, maxCambios = 6 } = {}
 ) {
   const id = setInterval(() => {
     const espacios = obtenerEspaciosActuales();

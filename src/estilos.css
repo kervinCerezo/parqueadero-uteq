@@ -381,9 +381,19 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  background: var(--uteq-verde-950);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 26px
+    ),
+    radial-gradient(circle at 20% 0%, #123a2b 0%, transparent 55%),
+    var(--uteq-verde-950);
   border-radius: 16px;
-  padding: 16px;
+  padding: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .columna-titulo {
@@ -399,32 +409,71 @@ a {
 .columna-espacios {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .espacio-celda {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   border: none;
-  border-radius: 8px;
-  padding: 7px 6px;
+  border-radius: 9px;
+  padding: 8px 10px;
   cursor: pointer;
   text-align: left;
   font-family: var(--fuente-mono);
   color: #fff;
-  transition: transform 0.12s ease;
+  background: var(--sin-datos);
+  transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
 }
 
 .espacio-celda:hover {
-  transform: scale(1.04);
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.08);
 }
 
-.espacio-celda.libre { background: var(--libre); color: #06281c; }
-.espacio-celda.ocupado { background: var(--ocupado); }
-.espacio-celda.sin-datos { background: var(--sin-datos); }
+.espacio-celda.libre {
+  background: linear-gradient(135deg, #2fbf88, #1f9d6c);
+  color: #06281c;
+  border-color: rgba(6, 40, 28, 0.25);
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+}
+
+.espacio-celda.libre:hover {
+  box-shadow: 0 0 14px 1px rgba(52, 211, 153, 0.55);
+}
+
+.espacio-celda.ocupado {
+  background: linear-gradient(135deg, #f2543d, #d63c27);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.espacio-celda.sin-datos {
+  background: linear-gradient(135deg, #9aa5ac, #7c8890);
+}
+
+.espacio-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.espacio-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
 
 .espacio-celda .id {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   display: block;
+  letter-spacing: 0.01em;
 }
 
 .espacio-celda .distancia {
@@ -435,7 +484,8 @@ a {
 
 .espacio-celda.seleccionado {
   outline: 2px solid #fff;
-  outline-offset: 1px;
+  outline-offset: 2px;
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* ---------- Tarjeta de detalle (panel lateral) ---------- */
