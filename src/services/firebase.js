@@ -1,9 +1,9 @@
 // src/services/firebase.js
 //
-// IMPORTANTE: reemplaza los valores de firebaseConfig con los de TU
-// proyecto (Firebase Console > Configuración del proyecto > Tus apps > SDK).
-// Nunca subas tus credenciales reales de un proyecto de producción a un
-// repositorio público sin restringir las reglas de la base de datos.
+// La configuración se lee desde variables de entorno (archivo .env en la
+// raíz del proyecto, ver .env.example). Así las credenciales no quedan
+// escritas directamente en el código fuente ni se suben a GitHub
+// (.env está en .gitignore).
 
 import { initializeApp } from "firebase/app";
 import {
@@ -17,13 +17,13 @@ import {
 } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCIbTKo2fgN-sHRECp2JQEXvtUdkHZ-6FI",
-  authDomain: "estacionamiento-99c64.firebaseapp.com",
-  databaseURL: "https://estacionamiento-99c64-default-rtdb.firebaseio.com",
-  projectId: "estacionamiento-99c64",
-  storageBucket: "estacionamiento-99c64.firebasestorage.app",
-  messagingSenderId: "818079996119",
-  appId: "1:818079996119:web:ba9c7222723979fe083892"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
